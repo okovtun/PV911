@@ -1,6 +1,8 @@
+https://www.youtube.com/watch?v=4M3O83VYL1A&list=PLFkgzpHG4CYUP72FxA_04uuQO0URYRM1J&index=1
 https://github.com/okovtun/PV911.git
 
 TODO:
 1. Выучить теорию!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+DONE:
 2. Написать метод ??? Dispance(???), который возвращает расстояние до указанной точки;
 3. Написать функцию ??? Distance(???), которая возвращает расстояние между двумя точками;
