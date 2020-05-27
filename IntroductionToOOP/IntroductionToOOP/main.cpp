@@ -1,5 +1,7 @@
 #include<iostream>
-using namespace std;
+using std::cin;
+using std::cout;
+using std::endl;
 
 //	Inheritance
 //	Polymorphism
@@ -26,9 +28,34 @@ public:
 		this->y = y;
 	}
 	//			Constructors:
-	Point()
+	/*Point()
 	{
+		x = y = double();
+		cout << "DefultConstructor:\t" << this << endl;
+	}
+	Point(double x)
+	{
+		this->x = x;
+		this->y = double();
 		cout << "Constructor:\t" << this << endl;
+	}*/
+	Point(double x = 0, double y = 0)
+	{
+		this->x = x;
+		this->y = y;
+		cout << "Constructor:\t" << this << endl;
+	}
+	Point(const Point& other)
+	{
+		this->x = other.x;
+		this->y = other.y;
+		cout << "CopyConstructor:\t" << this << endl;
+	}
+	void operator=(const Point& other)
+	{
+		this->x = other.x;
+		this->y = other.y;
+		cout << "CopyAssignment:\t" << this << endl;
 	}
 	~Point()
 	{
@@ -42,6 +69,10 @@ public:
 		double y_distance = this->y - other.y;
 		double distance = sqrt(x_distance*x_distance + y_distance * y_distance);
 		return distance;
+	}
+	void print()const
+	{
+		cout << "X = " << x << ", Y = " << y << endl;
 	}
 };
 
@@ -80,7 +111,7 @@ public:
 ------------------------
 Special members:
 1. Constructor - это метод, который создает объект;
-2. ~Destructor  - это метод, который удаяет объект, по истечении его времени жизни;
+2. ~Destructor - это метод, который удаяет объект, по истечении его времени жизни;
 3. Operator=   - удаляет значение объеккта, и присваивает ему значение другого объекта;
 
 Constructors:
@@ -92,9 +123,15 @@ Constructors:
 ------------------------
 */
 
+//#define ENCAPSULATION
+//#define CONSTRUCTORS
+#define COPY_METHODS
+
 void main()
 {
 	setlocale(LC_ALL, "");
+
+#ifdef ENCAPSULATION
 	int a;	//Объявление переменной 'a', типа 'int'.
 	Point A;//Объявление переменной 'A', типа 'Point'.
 			//Создание экземпляра 'A', структуры 'Point'.
@@ -116,9 +153,58 @@ void main()
 
 	for (int i = 0; i < 5; i++)
 	{
+		//Point A;
 		cout << i << "\t";
 	}
 	cout << i << endl;
+#endif // ENCAPSULATION
+
+#ifdef CONSTRUCTORS
+	/*
+	Default constructor - это конструктор, который МОЖЕТ БЫТЬ ВЫЗВАН без параметров.
+	https://docs.microsoft.com/en-us/cpp/cpp/constructors-cpp?view=vs-2019#default_constructors
+	(implicit)
+	*/
+
+	Point A;	//Default constructor
+	A.print();
+
+	Point B = 2;//Single argument constructor
+	B.print();
+
+	Point C(3);	//Single argument constructor
+	C.print();
+
+	Point D(2, 3);//Constructor
+	D.print();
+
+	/*
+	1. Copy constructor (Конструктор копирования) - копирует объект;
+	2. Single argument constructor (Конструктор с одним параметром) - может быть использован
+		для преобразования типов;
+	*/
+#endif
+
+#ifdef COPY_METHODS
+	//CopyConstructor
+//CopyAssignment (Assignment operator = )
+//CopyMethods особенно актуальны, 
+//если в классе использется динамическая память.
+/*Class(const Class& other)
+{
+	group - of - statements;
+}*/
+
+	Point A = 2;	//Single argument constructor
+	A.print();
+
+	Point B = A;	//CopyConstructor
+	B.print();
+
+	Point C;	//Default constuctor
+	C = A;	//CopyAssignment
+#endif // COPY_METHODS
+
 }
 
 /*
