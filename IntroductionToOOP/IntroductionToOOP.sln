@@ -7,6 +7,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "IntroductionToOOP", "Introd
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "HomeWorkAlex", "HomeWorkAlex\HomeWorkAlex.vcxproj", "{8BA8AC14-A919-4692-8F40-8B657DEAEBFD}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Fraction", "Fraction\Fraction.vcxproj", "{378BF3D6-DE60-44AC-AB31-123B0A024531}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -31,6 +33,14 @@ Global
 		{8BA8AC14-A919-4692-8F40-8B657DEAEBFD}.Release|x64.Build.0 = Release|x64
 		{8BA8AC14-A919-4692-8F40-8B657DEAEBFD}.Release|x86.ActiveCfg = Release|Win32
 		{8BA8AC14-A919-4692-8F40-8B657DEAEBFD}.Release|x86.Build.0 = Release|Win32
+		{378BF3D6-DE60-44AC-AB31-123B0A024531}.Debug|x64.ActiveCfg = Debug|x64
+		{378BF3D6-DE60-44AC-AB31-123B0A024531}.Debug|x64.Build.0 = Debug|x64
+		{378BF3D6-DE60-44AC-AB31-123B0A024531}.Debug|x86.ActiveCfg = Debug|Win32
+		{378BF3D6-DE60-44AC-AB31-123B0A024531}.Debug|x86.Build.0 = Debug|Win32
+		{378BF3D6-DE60-44AC-AB31-123B0A024531}.Release|x64.ActiveCfg = Release|x64
+		{378BF3D6-DE60-44AC-AB31-123B0A024531}.Release|x64.Build.0 = Release|x64
+		{378BF3D6-DE60-44AC-AB31-123B0A024531}.Release|x86.ActiveCfg = Release|Win32
+		{378BF3D6-DE60-44AC-AB31-123B0A024531}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
