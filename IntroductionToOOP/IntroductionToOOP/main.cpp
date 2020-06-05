@@ -49,7 +49,7 @@ public:
 	{
 		this->x = other.x;
 		this->y = other.y;
-		cout << "CopyConstructor:\t" << this << endl;
+		cout << "CopyConstructor:" << this << endl;
 	}
 	void operator=(const Point& other)
 	{
@@ -63,7 +63,7 @@ public:
 	}
 
 	//			Methods:
-	double distance(Point other)
+	double distance(const Point& other)
 	{
 		double x_distance = this->x - other.x;
 		double y_distance = this->y - other.y;
@@ -76,7 +76,7 @@ public:
 	}
 };
 
-double distance(Point A, Point B)
+double distance(const Point& A, const Point& B)
 {
 	double x_distance = A.get_x() - B.get_x();
 	double y_distance = A.get_y() - B.get_y();
@@ -123,9 +123,9 @@ Constructors:
 ------------------------
 */
 
-//#define ENCAPSULATION
+#define ENCAPSULATION
 //#define CONSTRUCTORS
-#define COPY_METHODS
+//#define COPY_METHODS
 
 void main()
 {
@@ -139,24 +139,27 @@ void main()
 	A.set_x(2);
 	A.set_y(3);
 	cout << A.get_x() << "\t" << A.get_y() << endl;
-
-	Point* pA = &A;
-	cout << pA->get_x() << "\t" << pA->get_y() << endl;
+	cout << "\n--------------------------------------------------\n";
+	//Point* pA = &A;
+	//cout << pA->get_x() << "\t" << pA->get_y() << endl;
 
 	Point B;
 	B.set_x(4);
 	B.set_y(5);
+	cout << B.get_x() << "\t" << B.get_y() << endl;
+	cout << "\n--------------------------------------------------\n";
 	cout << "Расстояние от точки 'A' до точки 'B':" << A.distance(B) << endl;
+	cout << "\n--------------------------------------------------\n";
 	cout << "Расстояние от точки 'B' до точки 'A':" << B.distance(A) << endl;
 	cout << "Расстояние между точками 'A' и 'B':  " << distance(A, B) << endl;
 	cout << "Расстояние между точками 'B' и 'A':  " << distance(B, A) << endl;
 
-	for (int i = 0; i < 5; i++)
-	{
-		//Point A;
-		cout << i << "\t";
-	}
-	cout << i << endl;
+	//for (int i = 0; i < 5; i++)
+	//{
+	//	//Point A;
+	//	//cout << i << "\t";
+	//}
+	////cout << i << endl;
 #endif // ENCAPSULATION
 
 #ifdef CONSTRUCTORS
