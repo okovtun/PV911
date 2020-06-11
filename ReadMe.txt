@@ -1,11 +1,18 @@
 https://www.youtube.com/watch?v=4M3O83VYL1A&list=PLFkgzpHG4CYUP72FxA_04uuQO0URYRM1J&index=1
 https://github.com/okovtun/PV911.git
 
+Special members:
+http://cplusplus.com/doc/tutorial/classes2/
+
 Operators overload:
 http://cplusplus.com/doc/tutorial/templates/
 https://docs.microsoft.com/en-us/cpp/cpp/operator-overloading?view=vs-2019
 
 TODO:
+0. Выучить теорию!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+1. Перегрузить арифметические операторы для типа данных Fraction.
+
+DONE:
 0. Выучить теорию!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 1. В класс Fraction добавить неконстантные методы:
 	to_proper() - неправильную дробь переводит в правильную;

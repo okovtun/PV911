@@ -99,9 +99,47 @@ public:
 			cout << 0;
 		cout << endl;
 	}
+	void to_proper()
+	{
+		integer += numerator / denominator;
+		numerator %= denominator;
+		//numerator = numerator % denominator;
+	}
+	void to_improper()
+	{
+		numerator += integer * denominator;
+		integer = 0;
+	}
+	void reduce()
+	{
+		//В дроби, в любом случае что-то больше. Числитель может быть больше знаменателя, или наоборот.
+		int more;	//большее значение
+		int less;	//меньшее значение
+		int reminder = 0;	//остаток от деления
+		if (numerator > denominator)
+		{
+			more = numerator;
+			less = denominator;
+		}
+		else
+		{
+			more = denominator;
+			less = numerator;
+		}
+		do
+		{
+			reminder = more % less;
+			more = less;
+			less = reminder;
+		} while (reminder);
+		int GCD = more;	//Greatest Common Divider - Наибольший Общий Делитель.
+		numerator /= GCD;
+		denominator /= GCD;
+	}
 };
 
 //#define CONSTRUCTORS_CHECK
+//#define ASSIGNMENT_CHECK
 
 void main()
 {
@@ -120,13 +158,14 @@ void main()
 	F.print();
 #endif // CONSTRUCTORS_CHECK
 
+#ifdef ASSIGNMENT_CHECK
 	/*Fraction A(1, 2);
-	A.print();
-	Fraction B;
-	B.print();
-	cout << "\n-------------------------------------------\n";
-	B = A;
-	cout << "\n-------------------------------------------\n";*/
+A.print();
+Fraction B;
+B.print();
+cout << "\n-------------------------------------------\n";
+B = A;
+cout << "\n-------------------------------------------\n";*/
 
 	int a, b, c;
 	a = b = c = 0;
@@ -134,4 +173,43 @@ void main()
 
 	Fraction A, B, C;
 	A = B = C = D;
+#endif // ASSIGNMENT_CHECK
+
+	/*Fraction A(7, 5);
+	A.print();
+	A.to_proper();
+	A.print();
+	A.to_improper();
+	A.print();*/
+
+	Fraction A(148, 44);
+	A.reduce();
+	A.print();
+	Fraction B(251, 934);
+	B.reduce();
+	B.print();
+	Fraction C = A + B;
+
+	int a = 2;
+	int b = 3;
+	int c = a + b;
 }
+
+//Operator overloading:
+/*
+1. Перегрузить можно только существующие операторы.
+	+ перегружается;
+	* перегружается;
+	++ перегружается;
+	** НЕ перегружается;
+2. Не все существующие операторы можно перегрузить.
+	Не перегружаются:
+	?: - тернарный оператор
+	.  - опертор прямого доступа
+	.* - 
+	:: - оператор разрешения видимости
+	#
+	##
+3. Перегруженные оперторы сохраняют приоритет.
+4. Изменить поведение операторов со встроенными типами данных НЕВОЗМОЖНО!
+*/
