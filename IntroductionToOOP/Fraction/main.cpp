@@ -41,12 +41,12 @@ public:
 		this->denominator = 1;
 		cout << "DefConstructor:\t" << this << endl;
 	}
-	Fraction(int integer)
+	explicit Fraction(int integer)
 	{
 		this->integer = integer;
 		this->numerator = 0;
 		this->denominator = 1;
-		cout << "Constructor:\t" << this << endl;
+		cout << "SingleArgConstructor:\t" << this << endl;
 	}
 	Fraction(int numerator, int denominator)
 	{
@@ -106,6 +106,24 @@ public:
 	//	return result;
 	//}
 
+	Fraction& operator++()	//Prefix increment
+	{
+		integer++;
+		return *this;
+	}
+	Fraction operator++(int)	//Suffix increment
+	{
+		Fraction buffer = *this;
+		integer++;
+		return buffer;
+	}
+
+	//		Type-cast operators:
+	operator int()
+	{
+		return integer;
+	}
+
 	//		Methods:
 	void print()const
 	{
@@ -136,6 +154,11 @@ public:
 	}
 	Fraction& reduce()
 	{
+		/*if (numerator == 0)
+		{
+			denominator = 1;
+			return *this;
+		}*/
 		//В дроби, в любом случае что-то больше. Числитель может быть больше знаменателя, или наоборот.
 		int more;	//большее значение
 		int less;	//меньшее значение
@@ -175,9 +198,37 @@ Fraction operator*(Fraction left, Fraction right)
 	return Fraction(left.get_numerator()*right.get_numerator(), left.get_denominator()*right.get_denominator()).to_proper().reduce();
 }
 
+Fraction operator+(const Fraction& left, const Fraction& right)
+{
+	return Fraction
+	(
+		left.get_integer() + right.get_integer(),
+		left.get_numerator()*right.get_denominator() + right.get_numerator()*left.get_denominator(),
+		left.get_denominator()*right.get_denominator()
+	).reduce().to_proper();
+}
+
+ostream& operator<<(ostream& os, const Fraction& obj)
+{
+	if (obj.get_integer())cout << obj.get_integer();
+	if (obj.get_numerator())
+	{
+		if (obj.get_integer())cout << "+";
+		//if (integer)cout << "(";
+		cout << obj.get_numerator() << "/" << obj.get_denominator();
+		//if (integer)cout << ")";
+	}
+	else if (obj.get_integer() == 0)
+		cout << 0;
+	return os;
+}
+
 //#define CONSTRUCTORS_CHECK
 //#define ASSIGNMENT_CHECK
 //#define METHODS_CHECK
+//#define ARITHMETIC_OPERATORS_CHECK
+//#define INCREMENT_CHECK
+//#define PRIMIRIVE_TYPE_CONVERSIONS
 
 void main()
 {
@@ -230,7 +281,7 @@ A.print();*/
 	Fraction C = A * B;
 #endif // METHODS_CHECK
 
-
+#ifdef ARITHMETIC_OPERATORS_CHECK
 	int a = 2;
 	int b = 3;
 	cout << a << endl;
@@ -244,13 +295,60 @@ A.print();*/
 
 	Fraction A(2, 3, 4);
 	Fraction B(5, 7, 8);
-	A.print();
+	//cout << A << " + " << B << " = " << A + B << endl;
+	/*A.print();
 	B.print();
-	Fraction C = A * B;
+	Fraction C = A + B;
 	A.print();
 	B.print();
 	C.print();
-	(A *= B).print();
+	(A *= B).print();*/
+#endif // ARITHMETIC_OPERATORS_CHECK
+
+#ifdef INCREMENT_CHECK
+	for (double i = 2.5; i < 10; i++)cout << i << "\t"; cout << endl;
+	Fraction A(1, 2);
+	Fraction B = A++;
+	B.print();
+	A.print();
+	cout << A + B << endl;
+#endif // INCREMENT_CHECK
+
+#ifdef PRIMIRIVE_TYPE_CONVERSIONS
+	double weight = 3.25;
+	//Explicit conversions (явное преобразование типов)
+	cout << (int)weight << endl;	//C-like cast notation
+	cout << int(weight) << endl;	//Functional notation
+
+	int a = 2;
+	cout << a + weight << endl;		//implicit conversion 'a' to double
+									//неявное преобразование 'a' в double
+
+	double pi = 3.14;
+	int b = pi;	//Conversion from more to less with loss of data.
+				//Преобразование от бОльшего к меньшему с потерей данных
+	cout << b << endl;
+
+	double c = 5;
+	int d = c;	//Преобразование от бОльшего к меньшему БЕЗ потери данных.
+	double e = d;//Преобразование от меньшего к большему.
+
+	unsigned short f = 100000;
+	cout << f << endl;
+#endif // PRIMIRIVE_TYPE_CONVERSIONS
+
+	double a = 5;	//
+	cout << a << endl;
+	Fraction A;// = 5;	//Single argument constructor.
+	cout << A << endl;
+	A = (Fraction)8;
+	cout << A << endl;
+
+	double b = A;
+	double pi = 3.14;
+	Fraction PI = pi;
+
+	//Type-cast operators
 }
 
 //Operator overloading:
@@ -264,7 +362,7 @@ A.print();*/
 	Не перегружаются:
 	?: - тернарный оператор
 	.  - опертор прямого доступа
-	.* - 
+	.* -
 	:: - оператор разрешения видимости
 	#
 	##

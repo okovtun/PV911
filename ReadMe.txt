@@ -8,11 +8,19 @@ Operators overload:
 http://cplusplus.com/doc/tutorial/templates/
 https://docs.microsoft.com/en-us/cpp/cpp/operator-overloading?view=vs-2019
 
+Type conversions:
+http://www.cplusplus.com/doc/tutorial/typecasting/
+
 TODO:
 0. Выучить теорию!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+1. Обеспечить преобразование Fraction в double;
+2. Обеспечить преобразование double во Fraction;
+3. Перегрузить операторы сравнения: ==, !=, >, <, >=, <=;
+
+
+DONE:
 1. Перегрузить арифметические операторы для типа данных Fraction: *, /, +, -.
 2. Перегрузить составные присваивания: *=, /=, +=, -=;
-3. Перегрузить операторы сравнения: ==, !=, >, <, >=, <=;
 
 DONE:
 0. Выучить теорию!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
