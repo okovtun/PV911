@@ -4,6 +4,9 @@ https://github.com/okovtun/PV911.git
 Special members:
 http://cplusplus.com/doc/tutorial/classes2/
 
+TODO:
+Проверчный код в проекте 'String' должен заработать.
+
 Operators overload:
 http://cplusplus.com/doc/tutorial/templates/
 https://docs.microsoft.com/en-us/cpp/cpp/operator-overloading?view=vs-2019
