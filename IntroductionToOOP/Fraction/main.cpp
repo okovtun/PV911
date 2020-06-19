@@ -48,14 +48,23 @@ public:
 		this->denominator = 1;
 		cout << "SingleArgConstructor:\t" << this << endl;
 	}
-	Fraction(int numerator, int denominator)
+	explicit Fraction(double decimal)
+	{
+		integer = decimal;
+		decimal -= integer;
+		decimal *= 100000000;
+		numerator = decimal;
+		denominator = 100000000;
+		reduce();
+	}
+	explicit Fraction(int numerator, int denominator)
 	{
 		this->integer = 0;
 		this->numerator = numerator;
 		this->set_denominator(denominator);
 		cout << "Constructor:\t" << this << endl;
 	}
-	Fraction(int integer, int numerator, int denominator)
+	explicit Fraction(int integer, int numerator, int denominator)
 	{
 		this->integer = integer;
 		this->numerator = numerator;
@@ -118,10 +127,24 @@ public:
 		return buffer;
 	}
 
+	Fraction& operator()(int integer, int numerator, int denominator)
+	{
+		set_integer(integer);
+		set_numerator(numerator);
+		set_denominator(denominator);
+		cout << "Operator()\t" << this << endl;
+		return *this;
+	}
+
 	//		Type-cast operators:
-	operator int()
+	explicit operator int() const
 	{
 		return integer;
+	}
+
+	explicit operator double() const
+	{
+		return integer + (double)numerator / denominator;
 	}
 
 	//		Methods:
@@ -344,9 +367,25 @@ A.print();*/
 	A = (Fraction)8;
 	cout << A << endl;
 
-	double b = A;
+	Fraction B(2, 1, 2);
+	double b = (double)B;
+	cout << b << endl;
+	int c = (int)B;
+	cout << c << endl;
+
+	/*double b = A;
 	double pi = 3.14;
-	Fraction PI = pi;
+	Fraction PI = pi;*/
+
+	Fraction C(3.14);	//explicit constructor можно вызвать только так, 
+						//его нельзя вызвать оператором '='.
+	cout << C << endl;
+
+	/*C.set_integer(2);
+	C.set_numerator(7);
+	C.set_denominator(8);*/
+	C(2, 7, 8);
+	cout << C << endl;
 
 	//Type-cast operators
 }
