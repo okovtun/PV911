@@ -1,4 +1,5 @@
 #include<iostream>
+#include<string>
 using namespace std;
 
 class Fraction
@@ -145,6 +146,11 @@ public:
 	explicit operator double() const
 	{
 		return integer + (double)numerator / denominator;
+	}
+
+	operator string()const
+	{
+		return "Hello World";
 	}
 
 	//		Methods:
@@ -387,6 +393,8 @@ A.print();*/
 	C(2, 7, 8);
 	cout << C << endl;
 
+	string fr = C;
+	cout << fr << endl;
 	//Type-cast operators
 }
 

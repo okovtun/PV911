@@ -4,8 +4,19 @@ https://github.com/okovtun/PV911.git
 Special members:
 http://cplusplus.com/doc/tutorial/classes2/
 
+///////////////////////////////////////////////////////////////////////////////
+
 TODO:
+1. str1 += str2;
+2. Добавить в класс String MoveMethods: http://cplusplus.com/doc/tutorial/classes2/
+
+DONE:
 Проверчный код в проекте 'String' должен заработать.
+
+///////////////////////////////////////////////////////////////////////////////
+
+
+DONE:
 
 Operators overload:
 http://cplusplus.com/doc/tutorial/templates/
