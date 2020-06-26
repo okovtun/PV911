@@ -1,7 +1,10 @@
 #include<iostream>
 using std::cin;
 using std::cout;
-using std::endl;;
+using std::endl;
+
+class String;
+String operator+(const String& left, const String& right);
 
 class String
 {
@@ -43,6 +46,13 @@ public:
 			this->str[i] = other.str[i];
 		cout << "CopyConstructor:\t" << this << endl;
 	}
+	String(String&& other)
+	{
+		this->size = other.size;
+		this->str = other.str;
+		other.str = nullptr;
+		cout << "MoveConstructor:" << this << endl;
+	}
 	~String()
 	{
 		delete[] str;
@@ -63,6 +73,21 @@ public:
 			this->str[i] = other.str[i];
 		cout << "CopyAssignment:\t" << this << endl;
 		return *this;
+	}
+	String& operator=(String&& other)
+	{
+		if (this == &other)return *this;
+		delete[] this->str;
+		this->size = other.size;
+		this->str = other.str;
+		other.str = nullptr;
+		cout << "MoveAssignment:\t" << this << endl;
+		return *this;
+	}
+	String& operator+=(const String& other)
+	{
+		return *this = *this + other;
+		//return *this += other;	//Stack overflow exception
 	}
 
 	const char& operator[](int i)const
@@ -130,7 +155,23 @@ void main()
 #endif // COPY_METHODS_CHECK
 
 	String str1 = "Hello";
-	String str2 = "World";
-	String str3 = str1 + " " + str2;
+	String str2("World");
+	cout << "\n--------------------------	Operator Plus ----------------------------\n";
+	String str3;
+	str3 = str1 + str2;
 	cout << str3 << endl;
+	cout << "\n--------------------------	Operator +=   ----------------------------\n";
+	str1 += str2;
+	cout << str1 << endl;
+	cout << "\n-----------------------------------------------------------------------\n";
+
+	String str4();	//ќбъ€вл€етс€ функци€ str4, котора€ не принимает никаких параметров, 
+					//и возвращает значение типа String.
+	String str5{};	//явный вызов конструктора по умолчанию.
+	String str6{ "Single argument constructor" };
+	cout << str6 << endl;
 }
+
+//Move methods
+//Move constructor
+//Move assignment
