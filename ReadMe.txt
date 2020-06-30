@@ -7,6 +7,12 @@ http://cplusplus.com/doc/tutorial/classes2/
 ///////////////////////////////////////////////////////////////////////////////
 
 TODO:
+Реализовать проект Academy;
+
+DONE:
+Классы Fraction и Point вынести в отдельные файлы в ветке Separated;
+
+DONE:
 1. str1 += str2;
 2. Добавить в класс String MoveMethods: http://cplusplus.com/doc/tutorial/classes2/
 
