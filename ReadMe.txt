@@ -1,5 +1,6 @@
 https://www.youtube.com/watch?v=4M3O83VYL1A&list=PLFkgzpHG4CYUP72FxA_04uuQO0URYRM1J&index=1
 https://github.com/okovtun/PV911.git
+https://ravesli.com/urok-166-rannee-i-pozdnee-svyazyvaniya/
 
 Special members:
 http://cplusplus.com/doc/tutorial/classes2/
@@ -7,6 +8,9 @@ http://cplusplus.com/doc/tutorial/classes2/
 ///////////////////////////////////////////////////////////////////////////////
 
 ToRead: http://cplusplus.com/doc/tutorial/inheritance/
+
+TODO:
+Реализовать иерархию геометрических фигур. Area(), Perimeter(), Draw();
 
 DONE:
 Реализовать проект Academy;

@@ -2,7 +2,7 @@
 #include<string>
 using namespace std;
 
-//#define DEBUG
+#define DEBUG
 //Polymorphism (Многоформенность)
 
 class Human
@@ -46,8 +46,9 @@ public:
 #endif // DEBUG
 
 	}
-	~Human()
+	virtual ~Human()
 	{
+		//delete this;
 #ifdef DEBUG
 		cout << "HDestructor:\t" << this << endl;
 #endif // DEBUG
@@ -55,7 +56,7 @@ public:
 	}
 
 	//		Methods:
-	void print()const
+	virtual void print()const
 	{
 		cout << name << " " << surname << " " << age << " лет.\t";
 	}
@@ -223,6 +224,17 @@ public:
 	}
 };
 
+#define POLYMORPHISM
+//#define FUNCTION_POINTERS
+
+#ifdef FUNCTION_POINTERS
+int __cdecl add(int a, int b)
+{
+	return a + b;
+}
+#endif // FUNCTION_POINTERS
+
+
 void main()
 {
 	setlocale(LC_ALL, "");
@@ -241,20 +253,45 @@ void main()
 	Graduate petr(stud, "Винищення бурьяну");
 	petr.print();*/
 
-	Human group[] = 
+	
+
+#ifdef POLYMORPHISM
+	//UpCast (Generalization)
+	Human* group[] =
 	{
-		Student("Даня", "Дудченко", 17, "PV_911", 100,100),
-		Student("Дмитрий", "Никулин", 16, "PV_911", 100, 99),
-		Teacher("Андрей", "Кобылинский", 40, "HardwarePC", 20),
-		Student("Макс", "Пышненко", 16, "PV_911", 98, 95),
-		Teacher("Роман", "Шерстюк", 30, "Web development", 5),
-		Graduate("Даня", "Котыгорошко", 19, "PV_911", 100, 100, "Расширение конструкции сопоставления с образцом в языке OCaml"),
+		new Student("Даня", "Дудченко", 17, "PV_911", 100,100),
+		new Student("Дмитрий", "Никулин", 16, "PV_911", 100, 99),
+		new Teacher("Андрей", "Кобылинский", 40, "HardwarePC", 20),
+		new Student("Макс", "Пышненко", 16, "PV_911", 98, 95),
+		new Teacher("Роман", "Шерстюк", 30, "Web development", 5),
+		new Graduate("Даня", "Котыгорошко", 19, "PV_911", 100, 100, "Расширение конструкции сопоставления с образцом в языке OCaml"),
 	};
 	cout << sizeof(group) << endl;
 	cout << size(group) << endl;
+
+	//DownCast (Specialization)
 	for (int i = 0; i < size(group); i++)
 	{
-		group[i].print();
-		cout << endl;
+		//group[i]->print();
+		//cout << endl;
+		cout << *(group[i]) << endl;
 	}
+
+	for (int i = 0; i < size(group); i++)
+	{
+		delete group[i];
+	}
+#endif // POLYMORPHISM
+
+#ifdef FUNCTION_POINTERS
+	int a = 2;
+	int* pa = &a;
+	cout << a << endl;	//Раннее связывание
+	cout << *pa << endl;//Позднее связывание
+
+	cout << add << endl;
+	int(*function)(int, int) = add;
+	cout << function(2, 3) << endl;
+#endif // FUNCTION_POINTERS
+
 }
