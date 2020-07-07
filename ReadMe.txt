@@ -6,7 +6,9 @@ http://cplusplus.com/doc/tutorial/classes2/
 
 ///////////////////////////////////////////////////////////////////////////////
 
-TODO:
+ToRead: http://cplusplus.com/doc/tutorial/inheritance/
+
+DONE:
 Реализовать проект Academy;
 
 DONE:
