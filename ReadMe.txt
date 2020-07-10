@@ -10,6 +10,9 @@ http://cplusplus.com/doc/tutorial/classes2/
 ToRead: http://cplusplus.com/doc/tutorial/inheritance/
 
 TODO:
+Вычислить площадь и периметр треугольника.
+
+DONE:
 Реализовать иерархию геометрических фигур. Area(), Perimeter(), Draw();
 
 DONE:

@@ -124,6 +124,63 @@ namespace Geometry
 			}
 		}
 	};
+
+	class Triagle :public Shape
+	{
+		double side1, side2, side3;
+	public:
+		double get_side1()const
+		{
+			return side1;
+		}
+		double get_side2()const
+		{
+			return side2;
+		}
+		double get_side3()const
+		{
+			return side3;
+		}
+		double set_side1(double side1)
+		{
+			if (side1 < 0)side1 = -side1;
+			return this->side1 = side1;
+		}
+		double set_side2(double side2)
+		{
+			if (side2 < 0)side2 = -side2;
+			return this->side2 = side2;
+		}
+		double set_side3(double side3)
+		{
+			if (side3 < 0)side3 = -side3;
+			return this->side3 = side3;
+		}
+
+		Triagle(double side1, double side2, double side3)
+		{
+			set_side1(side1);
+			set_side2(side2);
+			set_side3(side3);
+			if (side3 >= (side1 + side2) || side1 >= (side2 + side3) || side2 >= (side1 + side3))
+				throw std::exception("Triangle Bad side");
+			std::cout << "TrConstructor:\t" << this << std::endl;
+		}
+		~Triagle()
+		{
+			std::cout << "TrDestructor:\t" << this << std::endl;
+		}
+		double area()const
+		{
+			return 0;
+		}
+		double perimeter()const
+		{
+			return 0;
+		}
+		void draw()const
+		{}
+	};
 }
 
 void main()
@@ -135,7 +192,16 @@ void main()
 	sq.draw();
 
 	Geometry::Rectangle rect(5, 8);
-	std::cout << "Rectangle area:\t" << sq.area() << std::endl;
-	std::cout << "Rectangle perimeter:\t" << sq.perimeter() << std::endl;
+	std::cout << "Rectangle area:\t" << rect.area() << std::endl;
+	std::cout << "Rectangle perimeter:\t" << rect.perimeter() << std::endl;
 	rect.draw();
+
+	try
+	{
+		Geometry::Triagle trgl(1, 2, 3);
+	}
+	catch (const std::exception& e)
+	{
+		std::cerr << e.what() << std::endl;
+	}
 }
