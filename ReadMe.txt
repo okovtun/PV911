@@ -7,9 +7,16 @@ http://cplusplus.com/doc/tutorial/classes2/
 
 ///////////////////////////////////////////////////////////////////////////////
 
-ToRead: http://cplusplus.com/doc/tutorial/inheritance/
+TOREAD:
+http://cplusplus.com/doc/tutorial/exceptions/
+https://docs.microsoft.com/en-us/cpp/cpp/exception-handling-in-visual-cpp?view=vs-2019
 
 TODO:
+Реализовать класс Binary, обеспечить арифметические и побитовые операции над двоичными числами
+
+ToRead: http://cplusplus.com/doc/tutorial/inheritance/
+
+DONE:
 Вычислить площадь и периметр треугольника.
 
 DONE:
