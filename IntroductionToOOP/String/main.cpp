@@ -134,6 +134,10 @@ std::ostream& operator<<(std::ostream& os, const String& obj)
 void main()
 {
 	setlocale(LC_ALL, "");
+	int a = 2;
+	int b = 3;
+	int c = a + b;
+
 #ifdef COPY_METHODS_CHECK
 	String str(8);
 	str.print();

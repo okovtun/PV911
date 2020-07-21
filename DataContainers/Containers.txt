@@ -1,0 +1,4 @@
+LIFO - Last In - First Out;
+FIFO - First In - First Out;
+
+Array	List	Tree
