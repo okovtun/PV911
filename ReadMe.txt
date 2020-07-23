@@ -5,11 +5,24 @@ https://ravesli.com/urok-166-rannee-i-pozdnee-svyazyvaniya/
 Special members:
 http://cplusplus.com/doc/tutorial/classes2/
 
+https://www.youtube.com/watch?v=6vH8_9BX7qI&list=PLFkgzpHG4CYWNTJgB6ZQ7waGXpb5jg0G2&index=10&t=0s for loop ;-)
+
 ////////////////////////////////////////////////////////////////////////////
 ///////////////////	DATA CONTAINERS		////////////////////////////
 ////////////////////////////////////////////////////////////////////////////
 
 TODO:
+В класс ForwardList добавить:
+1. Деструктор;
+2. Конструктор копирования;
+3. Оператор присваивания;
+4. Оператор +, который будет конкатенировать списки;
+5. MoveMethods;
+6. Конструктор на заданное число элементов ForwardList list(5), элементы должны быть заполнены нулями;
+7. Оператор [];
+8. ForwardList list{3, 5, 8, 13, 21}; for(int i=0; i<list.size; i++)cout << list[i] << tab;cout << endl;
+
+DONE vse, krome erase:
 1. pop_front - удаляет начальный элемент;
 2. pop_back  - удаляет последний элемент;
 3. insert - вставляет значение по индексу;
