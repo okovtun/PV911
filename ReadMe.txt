@@ -12,9 +12,23 @@ https://www.youtube.com/watch?v=6vH8_9BX7qI&list=PLFkgzpHG4CYWNTJgB6ZQ7waGXpb5jg
 ////////////////////////////////////////////////////////////////////////////
 
 TODO:
+В класс List (Двусвязный список) добавить методы:
+push_back();
+pop_front();
+pop_back();
+insert();
+erase();
+
+~List();
+CopyMethods;
+MoveMethods;
+operator+;
+operator+=;
+
+DONE:
 Переход итератора на следующий элемент обеспечить оператором ++ (Temp=Temp->pNext);
 
-TODO:
+DONE:
 В класс ForwardList добавить:
 1. Деструктор;
 2. Конструктор копирования;
