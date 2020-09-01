@@ -13,14 +13,17 @@ https://www.youtube.com/watch?v=6vH8_9BX7qI&list=PLFkgzpHG4CYWNTJgB6ZQ7waGXpb5jg
 
 TODO:
 В класс List (Двусвязный список) добавить методы:
-push_back();
-pop_front();
+push_back();		DONE
+pop_front();		DONE
 pop_back();
 insert();
-erase();
+erase();		DONE
 
-~List();
-CopyMethods;
+~List();	DONE
+CopyMethods;	DONE
+
+Проверчный код в main()-е должен заработать.
+
 MoveMethods;
 operator+;
 operator+=;
