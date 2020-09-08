@@ -12,10 +12,14 @@ https://www.youtube.com/watch?v=6vH8_9BX7qI&list=PLFkgzpHG4CYWNTJgB6ZQ7waGXpb5jg
 ////////////////////////////////////////////////////////////////////////////
 
 TODO:
+1. В класс Iterator добавить постфикные операторы ++/--
+2. В класс List добавить ReverseIterator, который позволит проходить по списку в обратном направлении;
+
+DONE:
 В класс List (Двусвязный список) добавить методы:
 push_back();		DONE
 pop_front();		DONE
-pop_back();
+pop_back();		DONE
 insert();
 erase();		DONE
 
