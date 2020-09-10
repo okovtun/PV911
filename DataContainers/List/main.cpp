@@ -1,4 +1,5 @@
 #include<iostream>
+#include<string>
 using std::cin;
 using std::cout;
 using std::endl;
@@ -6,15 +7,16 @@ using std::endl;
 #define tab "\t"
 //#define DEBUG
 
+template<typename T>
 class List
 {
 	class Element
 	{
-		int Data;
+		T Data;
 		Element* pNext;
 		Element* pPrev;
 	public:
-		Element(int Data, Element* pNext = nullptr, Element* pPrev = nullptr) :Data(Data), pNext(pNext), pPrev(pPrev)
+		Element(T Data, Element* pNext = nullptr, Element* pPrev = nullptr) :Data(Data), pNext(pNext), pPrev(pPrev)
 		{
 			cout << "EConstructor:\t" << this << endl;
 		}
@@ -58,11 +60,11 @@ public:
 			return *this;
 		}
 
-		const int& operator*()const
+		const T& operator*()const
 		{
 			return Temp->Data;
 		}
-		int& operator*()
+		T& operator*()
 		{
 			return Temp->Data;
 		}
@@ -105,11 +107,11 @@ public:
 			Temp = Temp->pNext;
 			return *this;
 		}
-		const int& operator*()const
+		const T& operator*()const
 		{
 			return Temp->Data;
 		}
-		int& operator*()
+		T& operator*()
 		{
 			return Temp->Data;
 		}
@@ -150,9 +152,9 @@ public:
 		size = 0;
 		cout << "LConstructor:\t" << this << endl;
 	}
-	List(const std::initializer_list<int>& il) :List()
+	List(const std::initializer_list<T>& il) :List()
 	{
-		for (const int* it = il.begin(); it != il.end(); it++)
+		for (const T* it = il.begin(); it != il.end(); it++)
 		{
 			//*it += 5;
 			push_back(*it);
@@ -185,7 +187,7 @@ public:
 
 
 	//			Adding elements:
-	void push_front(int Data)
+	void push_front(T Data)
 	{
 		/*Element* New = new Element(Data);
 		if (Head == nullptr && Tail == nullptr)
@@ -206,7 +208,7 @@ public:
 		size++;
 		//////////////////////////////////////////////////
 	}
-	void push_back(int Data)
+	void push_back(T Data)
 	{
 		if (Head == nullptr && Tail == nullptr)
 		{
@@ -324,6 +326,7 @@ public:
 
 //#define BASE_CHECK
 //#define COPY_METHODS
+//#define ITERATORS_CHECK
 
 void main()
 {
@@ -365,6 +368,7 @@ void main()
 	cout << "\n===============================================\n";
 #endif // COPY_METHODS
 
+#ifdef ITERATORS_CHECK
 	List list = { 3, 5, 8, 13, 21 };
 	//list.print();
 
@@ -381,9 +385,46 @@ void main()
 	cout << endl;
 
 	//for (List::Iterator it = list.end(); it; --it)
-	for(List::ReverseIterator rit=list.rbegin(); rit!=list.rend(); ++rit)
+	for (List::ReverseIterator rit = list.rbegin(); rit != list.rend(); ++rit)
 	{
 		cout << *rit << "\t";
+	}
+	cout << endl;
+#endif // ITERATORS_CHECK
+
+	//Class<type> object;
+	//List<int> list;	//ќбъ€вление объекта шаблонного класса.
+
+	List<int> list1 = { 3, 5, 8, 13, 21 };
+	for (List<int>::Iterator it = list1.begin(); it != list1.end(); ++it)
+	{
+		cout << *it << tab;
+	}
+	cout << endl;
+	for (List<int>::ReverseIterator it = list1.rbegin(); it != list1.rend(); ++it)
+	{
+		cout << *it << tab;
+	}
+	cout << endl;
+	////////////////////////////////////////////////////////////////////////////////////
+	List<double> list2 = { 2.5, 3.14, 8.2, 12.21 };
+	for (double i : list2)
+	{
+		cout << i << tab;
+	}
+	cout << endl;
+	////////////////////////////////////////////////////////////////////////////////////
+	List<std::string> list3 = {"живет", "на", "свете"};
+	list3.push_front("’орошо");
+	list3.push_back("¬инни-ѕух");
+	for (std::string i : list3)
+	{
+		cout << i << tab;
+	}
+	cout << endl;
+	for (List<std::string>::ReverseIterator it = list3.rbegin(); it != list3.rend(); ++it)
+	{
+		cout << *it << tab;
 	}
 	cout << endl;
 }
