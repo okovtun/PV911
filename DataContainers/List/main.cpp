@@ -7,8 +7,11 @@ using std::endl;
 #define tab "\t"
 //#define DEBUG
 
-template<typename T>
-class List
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////		CLASS DECLARATION		///////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+template<typename T>class List
 {
 	class Element
 	{
@@ -16,14 +19,8 @@ class List
 		Element* pNext;
 		Element* pPrev;
 	public:
-		Element(T Data, Element* pNext = nullptr, Element* pPrev = nullptr) :Data(Data), pNext(pNext), pPrev(pPrev)
-		{
-			cout << "EConstructor:\t" << this << endl;
-		}
-		~Element()
-		{
-			cout << "EDestructor:\t" << this << endl;
-		}
+		Element(T Data, Element* pNext = nullptr, Element* pPrev = nullptr);
+		~Element();
 		friend class List;
 	};// *Head, *Tail;
 	Element* Head;
@@ -35,47 +32,17 @@ public:
 	{
 		Element* Temp;
 	public:
-		Iterator(Element* Temp = nullptr) :Temp(Temp)
-		{
-#ifdef DEBUG
-			cout << "ItConstructor:\t" << this << endl;
-#endif // DEBUG
-		}
-		~Iterator()
-		{
-#ifdef DEBUG
-			cout << "ItDestructor:\t" << this << endl;
-#endif // DEBUG
-		}
-		Iterator& operator++()
-		{
-			Temp = Temp->pNext;
-			return *this;
-		}
-		Iterator& operator--()
-		{
-			Temp = Temp->pPrev;
-			return *this;
-		}
+		Iterator(Element* Temp = nullptr);
+		~Iterator();
+		Iterator& operator++();
+		Iterator& operator--();
 
-		const T& operator*()const
-		{
-			return Temp->Data;
-		}
-		T& operator*()
-		{
-			return Temp->Data;
-		}
+		const T& operator*()const;
+		T& operator*();
 
-		bool operator!=(const Iterator& other)const
-		{
-			return this->Temp != other.Temp;
-		}
+		bool operator!=(const Iterator& other)const;
 
-		operator bool()const
-		{
-			return Temp;
-		}
+		operator bool()const;
 	};
 
 	class ReverseIterator
@@ -151,6 +118,75 @@ public:
 	void print();
 	void print_reverse();
 };
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////		CLASS DEFINITION		///////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+template<typename T>
+List<T>::Element::Element(T Data, Element* pNext, Element* pPrev) :Data(Data), pNext(pNext), pPrev(pPrev)
+{
+	cout << "EConstructor:\t" << this << endl;
+}
+template<typename T>
+List<T>::Element::~Element()
+{
+	cout << "EDestructor:\t" << this << endl;
+}
+
+/////////////////////////////////////////////	INTERATOR	///////////////////////////////////////////////////////
+
+template<typename T>
+List<T>::Iterator::Iterator(Element* Temp) :Temp(Temp)
+{
+#ifdef DEBUG
+	cout << "ItConstructor:\t" << this << endl;
+#endif // DEBUG
+}
+template<typename T>
+List<T>::Iterator::~Iterator()
+{
+#ifdef DEBUG
+	cout << "ItDestructor:\t" << this << endl;
+#endif // DEBUG
+}
+template<typename T>
+typename List<T>::Iterator& List<T>::Iterator::operator++()
+{
+	Temp = Temp->pNext;
+	return *this;
+}
+template<typename T>
+typename List<T>::Iterator& List<T>::Iterator::operator--()
+{
+	Temp = Temp->pPrev;
+	return *this;
+}
+
+template<typename T>
+const T& List<T>::Iterator::operator*()const
+{
+	return Temp->Data;
+}
+template<typename T>
+T& List<T>::Iterator::operator*()
+{
+	return Temp->Data;
+}
+template<typename T>
+bool List<T>::Iterator::operator!=(const Iterator& other)const
+{
+	return this->Temp != other.Temp;
+}
+template<typename T>
+List<T>::Iterator::operator bool()const
+{
+	return Temp;
+}
+
+////////////////////////////////////////////
+
+////////////////////////////////////////////	  LIST		///////////////////////////////////////////////////////
 
 template<typename T>
 typename const List<T>::Iterator List<T>::begin()const
