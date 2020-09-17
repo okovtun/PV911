@@ -13,6 +13,12 @@ https://www.youtube.com/watch?v=6vH8_9BX7qI&list=PLFkgzpHG4CYWNTJgB6ZQ7waGXpb5jg
 
 TODO:
 В Бинарное дерево добавить методы:
+erase() - удаляет заданное значение из дерева;
+~Tree();
+ILconstructor;
+CopyConstructor;
+
+DONE:
 int minValue() - возвращает минимальное значение в дереве;
 int maxValue() - возвращает максимальное значение в дереве;
 int count() - считает количество элементов дерева;
